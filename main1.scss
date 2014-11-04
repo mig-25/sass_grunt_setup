@@ -1,0 +1,115 @@
+// bower:scss
+@import "susy/sass/_susy.scss";
+@import "sassy-maps/sass/_sassy-maps.scss";
+@import "breakpoint-sass/stylesheets/_breakpoint.scss";
+@import "normalize.scss/_normalize.scss";
+// endbower
+
+@import "compass";
+@import "susy";
+
+
+$susy: (columns: 8, global-box-sizing: border-box, gutters: 1/4, gutter-position: inside, debug: (image: show-columns, output: overlay, toggle: bottom left));
+
+@include border-box-sizing;
+
+$mobile:320px;
+$tablet:720px;
+$desktop:1200px;
+
+
+body{
+	overflow: hidden;
+	/*@include container(80%);*/
+	}
+	
+.page{
+	@include container(80%);
+	/*breakpoint for tablet*/
+	@include susy-breakpoint($tablet, 12){
+		@include show-grid(12);
+		}
+		/*breakpoint for desktop*/
+		@include susy-breakpoint($desktop, 24){
+			@include show-grid(24);}
+		}	
+
+a {
+  text-decoration: none;
+  color: #555;
+}
+
+img{
+	max-width:100%;
+	height:auto;
+	}
+	
+.gallery img{
+	@include gallery(6 of 12);
+    margin-bottom:gutter();
+	@include susy-breakpoint($desktop, 24){
+		@include gallery(3 of 12);
+		}
+	}	
+
+aside ul {
+    padding:0;
+    li{
+        list-style:none;
+    margin: 0;
+    a{
+        display: block;
+        padding: 10px 5%;
+        border-bottom: solid 1px #95a5a6;
+    }
+}
+}
+
+main{
+	@include susy-breakpoint($mobile, 8){
+		@include span(6);
+		margin-bottom: 10%;
+		}
+    @include susy-breakpoint($tablet, 12) {
+        @include span(8);
+		margin-bottom: 15%;
+    }
+	@include susy-breakpoint($desktop, 24){
+		 @include span(21);
+        .col1, .col2, .col3{
+            @include span(4 of 12);
+			}
+			
+}
+}
+aside{
+	@include susy-breakpoint($mobile, 8){
+		@include span(6);
+		margin-bottom: 15%;
+		}
+    @include susy-breakpoint($tablet, 12) {
+        @include span(4 of last);
+    }
+	@include susy-breakpoint($desktop, 24){
+		@include span(3);
+		}
+}
+
+
+
+footer {
+clear: both;
+  font-size: .9em;
+  color: #fff;
+  text-align: center;
+  padding: .6em;
+  background-color: #979791;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;    
+}
+
+footer p{
+    text-align:center;
+}	
